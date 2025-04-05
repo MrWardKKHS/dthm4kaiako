@@ -6,13 +6,40 @@
 {% block content %}
   <div class="container">
 
-    <div class="row">
-      <div class="col-sm-12">
-        <h1>{{ object.get_full_name }}</h1>
-      </div>
-    </div>
-
     {% if object == request.user %}
+      <div class="row">
+        <div class="col-md-8 col-lg-6">
+          <div class="card shadow-sm mb-4">
+            <div class="card-body">
+              <h3 class="card-title">Account Information</h3>
+              <p><strong>Name:</strong> {{ object.first_name }} {{ object.last_name }}</p>
+              <p><strong>Email:</strong> {{ object.email }}</p>
+              <p><strong>Institution:</strong> {{ object.institution_name }}</p>
+              <p><strong>Address:</strong> {{ object.institution_address }}</p>
+              <p><strong>Membership Category:</strong> {{ object.membership_category }}</p>
+              <p><strong>Membership Expiry:</strong> {{ object.membership_expiry|date:"j F Y" }}</p>
+
+              <hr>
+
+              {% if object.is_approved %}
+                <span class="badge bg-success">Account Approved</span>
+                {% if object.is_paid_up %}
+                  <span class="badge bg-success">Membership Paid</span>
+                {% else %}
+                  <span class="badge bg-warning text-dark">Payment Pending</span>
+                {% endif %}
+              {% else %}
+                <span class="badge bg-danger">Approval Pending</span>
+              {% endif %}
+
+              <hr>
+
+              <a href="{% url 'users:invoice_download' object.pk %}" class="btn btn-outline-primary">Download Invoice</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-12 col-md-6 col-lg-4">
           <h2>Profile Settings</h2>

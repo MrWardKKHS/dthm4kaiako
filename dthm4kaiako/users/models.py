@@ -4,17 +4,45 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 from utils.get_upload_filepath import get_entity_upload_path
+from django.utils import timezone
+from django.urls import reverse
 
 
 class User(AbstractUser):
     """User of website."""
 
-    username = models.CharField(max_length=50, default='user')
+    username = None  # Remove username field entirely
+    email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=50, verbose_name='first name')
     last_name = models.CharField(max_length=150, verbose_name='last name')
 
-    USERNAME_FIELD = 'id'
-    REQUIRED_FIELDS = ['first_name']
+    is_approved = models.BooleanField(default=False)
+
+    institution_name = models.CharField(max_length=255)
+    institution_address = models.TextField()
+
+    MEMBERSHIP_CATEGORIES = [
+        ('standard', '1 person Membership $50'),
+        ('student_teacher', 'Student Teacher (Free)'),
+        ('primary', 'Primary (Free)'),
+        ('year_7_8', 'Year 7-8 (Free)'),
+        ('kura_kaupapa', 'Kura Kaupapa (Free)'),
+        ('wider_sector', 'Wider Education Sector'),
+    ]
+
+    membership_category = models.CharField(max_length=50, choices=MEMBERSHIP_CATEGORIES)
+    is_paid_up = models.BooleanField(default=False)
+    membership_expiry = models.DateField(null=True, blank=True)
+
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = [
+        'first_name',
+        'last_name',
+        'institution_name',
+        'institution_address',
+        'membership_category',
+    ]
 
     def get_absolute_url(self):
         """Return URL for user's webpage."""

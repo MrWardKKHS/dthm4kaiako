@@ -16,8 +16,15 @@ class SignupForm(ModelForm):
     class Meta:
         """Metadata for SignupForm class."""
 
-        model = get_user_model()
-        fields = ['first_name', 'last_name']
+        model = User
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'institution_name',
+            'institution_address',
+            'membership_category',
+        ]
 
     def signup(self, request, user):
         """Extra logic when a user signs up.
@@ -26,6 +33,13 @@ class SignupForm(ModelForm):
         """
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
+        user.email = self.cleaned_data['email']
+        user.username = self.cleaned_data['email']  # Ensures email = username
+        user.institution_name = self.cleaned_data['institution_name']
+        user.institution_address = self.cleaned_data['institution_address']
+        user.membership_category = self.cleaned_data['membership_category']
+        user.is_approved = False
+        user.is_paid_up = False
         user.save()
 
 
@@ -47,3 +61,16 @@ class UserCreationForm(forms.UserCreationForm):
 
         model = User
         fields = ('email', 'first_name', 'last_name')
+
+class UserProfileForm(ModelForm):
+    """Form for updating user profile information."""
+
+    class Meta:
+        model = User
+        fields = [
+            'first_name',
+            'last_name',
+            'institution_name',
+            'institution_address',
+            'membership_category',
+        ]

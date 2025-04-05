@@ -4,6 +4,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.views.generic import DetailView, RedirectView, UpdateView
+from users.forms import UserProfileForm
+from django.http import HttpResponse
+from django.views import View
 
 User = get_user_model()
 
@@ -18,7 +21,7 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
     """View for updating user data."""
 
     model = User
-    fields = ['first_name', 'last_name']
+    form_class = UserProfileForm
 
     def get_success_url(self):
         """URL to route to on successful update."""
@@ -37,3 +40,17 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self):
         """URL to redirect to."""
         return reverse("users:detail", kwargs={"pk": self.request.user.pk})
+
+
+class InvoiceDownloadView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        user = User.objects.get(pk=pk)
+
+        # TODO: Replace with real PDF generation logic (e.g. using WeasyPrint)
+        response = HttpResponse(
+            f"Invoice for {user.get_full_name()}",
+            content_type="text/plain"
+        )
+        response["Content-Disposition"] = f"attachment; filename=invoice-{user.pk}.txt"
+        return response
+

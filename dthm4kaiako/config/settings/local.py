@@ -13,6 +13,10 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='DJANGO_SECRET_KEY_FOR_LOCAL_DEVEL
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['*']
 
+# For testing user registration
+ACCOUNT_ALLOW_REGISTRATION = True
+
+
 
 # DATABASE CONFIGURATION
 # ----------------------------------------------------------------------------
@@ -51,6 +55,7 @@ TEMPLATES[0]['OPTIONS']['debug'] = DEBUG  # noqa F405
 EMAIL_HOST = 'mailhog'
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-port
 EMAIL_PORT = 1025
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # django-debug-toolbar
 # ------------------------------------------------------------------------------

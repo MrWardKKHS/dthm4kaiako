@@ -13,7 +13,7 @@ services:
             - ./infrastructure/local/postgres/.envs
         command: /start
         networks:
-            - uccser-development-stack
+          # - uccser-development-stack
             - backend
         labels:
             # General labels
@@ -25,6 +25,8 @@ services:
             - "traefik.http.routers.dthm4kaiako-django.service=dthm4kaiako-django"
             - "traefik.http.routers.dthm4kaiako-django.rule=Host(`dthm4kaiako.localhost`)"
             - "traefik.http.routers.dthm4kaiako-django.tls=true"
+        ports:
+          - 8000:8000
 
     # Node server for creating static files
     node:

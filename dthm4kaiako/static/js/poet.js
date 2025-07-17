@@ -1,4 +1,5 @@
 // require('tooltip.js');
+import '../scss/poet.scss'
 
 $(document).ready(function () {
     progress_outcomes.forEach(function (progress_outcome, index) {

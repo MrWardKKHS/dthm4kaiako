@@ -42,5 +42,5 @@
     <script>
         var progress_outcomes = {{ progress_outcomes_json|safe }};
     </script>
-    <script src="{% static 'js/poet.js' %}"></script>
+    {% vite_asset 'poet.js' %}
 {% endblock scripts %}

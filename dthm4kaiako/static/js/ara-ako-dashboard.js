@@ -1,3 +1,4 @@
+import '../scss/ara-ako.scss'
 var dayjs = require('dayjs');
 var clock_element = document.getElementById('clock');
 var schedule_element = document.getElementById('dashboard-schedule');

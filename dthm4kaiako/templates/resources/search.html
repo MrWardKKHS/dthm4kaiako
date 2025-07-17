@@ -153,5 +153,5 @@
 {% endblock content_container %}
 
 {% block scripts %}
-    <script type="text/javascript" src="{% static 'js/resource-search.js' %}"></script>
+    {% vite_asset 'resource-search.js' %}
 {% endblock scripts %}

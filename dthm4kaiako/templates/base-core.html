@@ -1,9 +1,9 @@
-{% load static i18n %}
+{% load static i18n vite %}
 
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Metadata -->
+    <!-- metadata -->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block title %}dthm4kaiako.ac.nz{% endblock title %}</title>
@@ -11,27 +11,26 @@
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    {% if PRODUCTION_ENVIRONMENT %}
+    {% if production_environment %}
       <script defer data-domain="dthm4kaiako.ac.nz" src="https://plausible.io/js/plausible.js"></script>
     {% endif %}
 
     {% block favicon %}
-      <!-- Favicon (created by realfavicongenerator.net) -->
+      <!-- favicon (created by realfavicongenerator.net) -->
       <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/favicons/apple-touch-icon.png' %}">
       <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicons/favicon-32x32.png' %}">
       <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicons/favicon-16x16.png' %}">
       <link rel="manifest" href="{% static 'img/favicons/site.webmanifest' %}">
       <link rel="mask-icon" href="{% static 'img/favicons/safari-pinned-tab.svg' %}" color="#1f2730">
-      <meta name="msapplication-TileColor" content="#1f2730">
+      <meta name="msapplication-tilecolor" content="#1f2730">
       <meta name="theme-color" content="#1f2730">
     {% endblock favicon %}
 
-    <!-- Styling -->
-    <link href="{% static 'css/website.css' %}" rel="stylesheet">
+    <!-- styling -->
     {% block css %}
     {% endblock css %}
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+    <!-- html5 shim, for ie6-8 support of html5 elements -->
+    <!--[if lt ie 9]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
       <![endif]-->
   </head>
@@ -41,8 +40,8 @@
     {% block modal %}{% endblock modal %}
 
     {% block core_scripts %}
-      <script src="{% static 'js/vendors.js' %}"></script>
-      <script src="{% static 'js/website.js' %}"></script>
+      {% vite_asset 'website.js' %}
+      {% vite_asset 'vendors.js' %}
     {% endblock core_scripts %}
     {% block scripts %}
     {% endblock scripts %}

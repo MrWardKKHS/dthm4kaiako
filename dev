@@ -96,7 +96,7 @@ defhelp migrate 'Run Django migrate command.'
 # Build static files
 cmd_static() {
   echo "Building static files..."
-  docker compose -f docker-compose.local.yml run --rm node npm run generate-assets
+  docker compose -f docker-compose.local.yml run --rm node npm run build
 }
 defhelp static 'Build static files.'
 
@@ -221,7 +221,7 @@ defhelp test_backwards 'Run test suite backwards.'
 cmd_ci() {
   docker network create uccser-development-stack
   cmd_start
-  docker compose -f docker-compose.local.yml run --rm --user="root" node npm run generate-assets
+  docker compose -f docker-compose.local.yml run --rm --user="root" node npm run build
   docker compose -f docker-compose.local.yml run --rm --user="root" django python manage.py collectstatic --no-input
   local cmd="$1"
   shift

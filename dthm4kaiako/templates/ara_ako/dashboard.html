@@ -26,7 +26,7 @@
 {% endblock body %}
 
 {% block css %}
-    {% vite_asset 'ara-ako-dashboard.js' %}
+    {% vite_asset 'static/js/ara-ako-dashboard.js' %}
 {% endblock css %}
 
 {% block scripts %}
@@ -34,5 +34,5 @@
         const EVENT_SLUG = {{ ara_ako_event.slug }};
         const JSON_URL = '{% url 'ara_ako:dashboard_json' %}';
     </script>
-    {% vite_asset 'ara-ako-dashboard.js' %}
+    {% vite_asset 'static/js/ara-ako-dashboard.js' %}
 {% endblock scripts %}

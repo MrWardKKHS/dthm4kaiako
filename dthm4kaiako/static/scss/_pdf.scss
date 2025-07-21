@@ -1,13 +1,11 @@
-
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/mixins";
+@import "bootstrap/scss/mixins";
 @import "core-variables";
-@import "functions";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/root";
-@import "node_modules/bootstrap/scss/reboot";
-@import "node_modules/bootstrap/scss/type";
-@import "node_modules/bootstrap/scss/utilities";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/utilities";
 
 body {
   font-family: 'Noto Sans', sans-serif !important;

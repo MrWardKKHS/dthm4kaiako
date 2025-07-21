@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
     django:
         build:
@@ -25,6 +23,8 @@ services:
             - "traefik.http.routers.dthm4kaiako-django.service=dthm4kaiako-django"
             - "traefik.http.routers.dthm4kaiako-django.rule=Host(`dthm4kaiako.localhost`)"
             - "traefik.http.routers.dthm4kaiako-django.tls=true"
+        ports:
+            - "8000:8000"
 
     # Node server for creating static files
     node:
@@ -37,12 +37,14 @@ services:
         volumes:
             # https://burnedikt.com/dockerized-node-development-and-mounting-node-volumes/#exclude-node_modules-from-the-mount
             - ./dthm4kaiako/package.json:/app/package.json:z
-            - ./dthm4kaiako/gulpfile.js:/app/gulpfile.js:z
+            - ./dthm4kaiako/vite.config.js:/app/vite.config.js:z
             - ./dthm4kaiako/static:/app/static:z
             - ./dthm4kaiako/build:/app/build:z
         command: npm run dev
         networks:
             - backend
+        ports:
+            - "5173:5173"
 
     postgres:
         image: postgis/postgis:13-3.2

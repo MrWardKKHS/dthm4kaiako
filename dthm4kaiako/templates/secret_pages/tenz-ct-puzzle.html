@@ -100,6 +100,5 @@
 {% endblock body %}
 
 {% block css %}
-{# TODO replace with vite_asset #}
-    <link href="{% static 'css/secret_pages/tenz-ct-puzzle.css' %}" rel="stylesheet">
+    {% vite_asset 'static/css/tenz-ct-puzzle.css' %}
 {% endblock css %}

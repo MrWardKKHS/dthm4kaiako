@@ -127,6 +127,7 @@ THIRD_PARTY_APPS = [
     'modelclone',
     'svg',
     'tinymce',
+    'django_vite',
 ]
 LOCAL_APPS = [
     'general.apps.GeneralAppConfig',
@@ -436,6 +437,17 @@ LEARNING_AREA_CARDS_SINGLE_PRINT = 'Single'
 LEARNING_AREA_CARDS_DOUBLE_PRINT = 'Double'
 LEARNING_AREA_CARDS_PRINT_TYPES = (LEARNING_AREA_CARDS_SINGLE_PRINT, LEARNING_AREA_CARDS_DOUBLE_PRINT)
 
+
+# Vite
+# ------------------------------------------------------------------------------
+
+VITE_MANIFEST_PATH = os.path.join(BUILD_ROOT, '.vite', 'manifest.json')
+
+DJANGO_VITE = {
+    "default": {
+        "manifest_path": VITE_MANIFEST_PATH,
+    }
+}
 
 # Other
 # ------------------------------------------------------------------------------

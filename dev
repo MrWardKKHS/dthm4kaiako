@@ -104,7 +104,7 @@ defhelp static 'Build static files.'
 cmd_collect_static() {
   echo
   echo "Collecting static files..."
-  docker compose -f docker-compose.local.yml run --rm --label traefik.enable=false django python manage.py collectstatic --no-input --clear
+  docker compose -f docker-compose.local.yml run --rm --label traefik.enable=false django python manage.py collectstatic --no-input --clear --verbosity 0
 }
 defhelp collect_static "Collecting static files."
 
@@ -222,7 +222,7 @@ cmd_ci() {
   docker network create uccser-development-stack
   cmd_start
   docker compose -f docker-compose.local.yml run --rm --user="root" node npm run build
-  docker compose -f docker-compose.local.yml run --rm --user="root" django python manage.py collectstatic --no-input
+  docker compose -f docker-compose.local.yml run --rm --user="root" django python manage.py collectstatic --no-input --verbosity 0
   local cmd="$1"
   shift
   if [ -z "$cmd" ]; then

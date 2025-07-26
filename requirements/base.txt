@@ -18,7 +18,7 @@ django-modelclone-next==0.8.2
 django-recaptcha==3.0.0
 django-tinymce==4.1.0 # https://github.com/jazzband/django-tinymce
 djangorestframework==3.15.2  # https://github.com/encode/django-rest-framework
-django-vite
+django-vite==3.1.0
 
 # Web serving
 gunicorn==22.0.0

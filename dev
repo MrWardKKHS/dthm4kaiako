@@ -97,6 +97,9 @@ defhelp migrate 'Run Django migrate command.'
 cmd_static() {
   echo "Building static files..."
   docker compose -f docker-compose.local.yml run --rm node npm run build
+  echo ""
+  echo "If this the first time this process has run you may need to reboot django"
+  echo -e "Run the command ${CODE}./dev reboot_django${NC} to source manifest.json"
 }
 defhelp static 'Build static files.'
 
@@ -214,6 +217,22 @@ cmd_test_backwards() {
   docker compose -f docker-compose.local.yml run --rm --label traefik.enable=false django python ./manage.py test --settings=config.settings.testing --pattern "test_*.py" --reverse -v 0 --nomigrations
 }
 defhelp test_backwards 'Run test suite backwards.'
+
+# Reboot Django Docker container
+cmd_reboot_django() {
+  echo "Rebooting Django container..."
+  docker compose -f docker-compose.local.yml restart django
+}
+defhelp reboot_django 'Reboot Django container.'
+
+# Initialise a new copy of the project
+cmd_init() {
+    cmd_build
+    cmd_start
+    cmd_update
+    cmd_reboot_django
+}
+defhelp init 'Initialise project. Runs build, start, update and reboots django'
 
 # --- Testing -----------------------------------------------------------------
 # For use in GitHub Actions environment

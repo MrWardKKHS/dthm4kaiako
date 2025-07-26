@@ -148,11 +148,11 @@ $hover-alpha: .1;
   .year-level-#{$num} {
     @extend .badge;
     // Between 20% and 90% lightness
-    $year-level-background-colour: adjust-color(hsl(235, 20, 90), $lightness: (60 / 14 * $num) * -1%);
+    $year-level-background-colour: adjust-color(hsl(235, 20%, 90%), $lightness: (60 / 14 * $num) * -1%);
     background-color: $year-level-background-colour;
     color: get-text-colour($year-level-background-colour);
     &:hover {
-      background-color: darken($year-level-background-colour, 15%);
+      background-color: color.adjust($year-level-background-colour, $lightness: -15%);
       color: get-text-colour($year-level-background-colour);
     }
   }
@@ -174,19 +174,19 @@ $ncea-level-3-colour: #ffa2a2;
   &-1 {
     background-color: $ncea-level-1-colour;
     &:hover {
-      background-color: darken($ncea-level-1-colour, 10%);
+      background-color: color.adjust($ncea-level-1-colour, $lightness: -10%);
     }
   }
   &-2 {
     background-color: $ncea-level-2-colour;
     &:hover {
-      background-color: darken($ncea-level-2-colour, 10%);
+      background-color: color.adjust($ncea-level-2-colour, $lightness: -10%);
     }
   }
   &-3 {
     background-color: $ncea-level-3-colour;
     &:hover {
-      background-color: darken($ncea-level-3-colour, 10%);
+      background-color: color.adjust($ncea-level-3-colour, $lightness: -10%);
     }
   }
 }
@@ -203,7 +203,7 @@ $language-width: 4rem;
     background-color: $language-dark;
     color: $language-light;
     &:hover {
-      background-color: lighten($language-dark, 13%);
+      background-color: color.adjust($language-dark, $lightness: 13%);
       color: $language-light;
     }
   }
@@ -211,7 +211,7 @@ $language-width: 4rem;
     background-color: $language-light;
     color: $language-dark;
     &:hover {
-      background-color: darken($language-light, 10%);
+      background-color: color.adjust($language-light, $lightness: -10%);
       color: $language-dark;
     }
   }

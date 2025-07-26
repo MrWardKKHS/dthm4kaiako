@@ -1,3 +1,4 @@
+@use "sass:color";
 @import "core-variables";
 
 $technology-brown: #9c5444;
@@ -69,11 +70,11 @@ label {
     }
     #curriculum-level-strand-title-dddo {
         color: $ta-dddo;
-        background-color: lighten($color: $ta-dddo, $amount: 50)
+        background-color: color.adjust($color: $ta-dddo, $lightness: 50)
     }
     #curriculum-level-strand-title-ct {
         color: $ta-ct;
-        background-color: lighten($color: $ta-ct, $amount: 50)
+        background-color: color.adjust($color: $ta-ct, $lightness: 50)
     }
 
     .curriculum-level-strand-title,

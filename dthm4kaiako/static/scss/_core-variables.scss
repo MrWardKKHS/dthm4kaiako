@@ -1,8 +1,10 @@
+@use "sass:color";
+
 // DTHM for kaiako
 $brand-colour: #15385a;
-$brand-colour-light: lighten($brand-colour, 5%);
-$brand-colour-dark: darken($brand-colour, 5%);
-$brand-colour-darker: darken($brand-colour, 10%);
+$brand-colour-light: color.adjust($brand-colour, $lightness: 5%);
+$brand-colour-dark: color.adjust($brand-colour, $lightness: -5%);
+$brand-colour-darker: color.adjust($brand-colour, $lightness: -10%);
 $logo-colour: #abc837;
 $logo-colour-accent: #dde9af;
 

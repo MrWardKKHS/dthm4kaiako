@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .navbar {
     padding-top: 0;
     padding-bottom: 0;
@@ -52,10 +54,10 @@
     background-color: $resources-brand-colour;
     .nav-link:hover,
     .navbar-brand:hover {
-        background-color: lighten($resources-brand-colour, 5%);
+        background-color: color.adjust($resources-brand-colour, $lightness: 5%);
     }
     .dropdown-item:hover {
-        background-color: lighten($resources-brand-colour, 5%);
+        background-color: color.adjust($resources-brand-colour, $lightness: 5%);
         color: $white;
     }
 }
@@ -65,10 +67,10 @@
     background-color: $events-brand-colour;
     .nav-link:hover,
     .navbar-brand:hover {
-        background-color: lighten($events-brand-colour, 5%);
+        background-color: color.adjust($events-brand-colour, $lightness: 5%);
     }
     .dropdown-item:hover {
-        background-color: lighten($events-brand-colour, 5%);
+        background-color: color.adjust($events-brand-colour, $lightness: 5%);
         color: $white;
     }
 }
@@ -85,10 +87,10 @@
     }
     .nav-link:hover,
     .navbar-brand:hover {
-        background-color: lighten($dtta-brand-colour-dark, 10%);
+        background-color: color.adjust($dtta-brand-colour-dark, $lightness: 10%);
     }
     .dropdown-item:hover {
-        background-color: lighten($dtta-brand-colour-dark, 10%);
+        background-color: color.adjust($dtta-brand-colour-dark, $lightness: 10%);
         color: $white;
     }
 }

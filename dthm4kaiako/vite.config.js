@@ -19,8 +19,6 @@ export default defineConfig({
             'resource-search.js': path.resolve(__dirname, 'static/js/resource-search.js'),
             'learning-area-cards.js': path.resolve(__dirname, 'static/js/learning-area-cards.js'),
             'tenz-ct-puzzle.js': path.resolve(__dirname, 'static/js/secret_pages/tenz-ct-puzzle.js'),
-            'vite-test.js': path.resolve(__dirname, 'static/js/vite-test.js'),
-
           }
         },
     },
